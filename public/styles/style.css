@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --primary-bg-color: #212250;
+  --primary-btn-bg-color: #fed058;
+  --primary-txt-color: #fff;
+  --secondary1-txt-color: #9392a6;
+  --secondary2-txt-color: #585a74;
+  --secondary3-txt-color: #fcdb59;
+  --card-bg-color: #1b1c48;
+  --primary-font-family: "Poppins", sans-serif;
+}
+
+* {
+  font-family: var(--primary-font-family);
+  color: var(--primary-txt-color);
+}
+body{
+  margin: 0;
+  padding: 0 36px 0 36px;
+  background-color: #212250;
+  box-sizing: border-box;
+
+}
+a {
+  text-decoration: none;
+  color: var(--primary-txt-color);
+}
+header{
+  padding: 16px;
+}
+.fa-magnifying-glass{
+  position: absolute;
+  left: 24px; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search-bar{
+  width: 100%;
+  padding: 8px;
+  padding-left: 35px; /* Add space for the icon */
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background-color: var(--card-bg-color);
+}
+.search-bar::placeholder{
+  color: var(--secondary1-txt-color);
+}
+.select-lang{
+  border-radius: 12px;
+  background-color: var(--card-bg-color);
+  padding: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.select-temp{
+  background-color: var(--card-bg-color);
+  border-radius: 16px;
+}
+.cel,.fah{
+  padding:10px;
+  background-color: var(--card-bg-color);
+  border-radius: 16px;
+  transition: 0.3s all ease;
+}
+.cel:hover,.fah:hover{
+  background-color:#30316e;
+}
