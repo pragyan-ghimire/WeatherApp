@@ -11,16 +11,17 @@
 </head>
 
 <body>
+    <script type="module" src="/jquery/jquery.min.js"></script>
     <main class="container-fluid">
         <header class="row text-center align-items-center ">
             <div class="date col-md-4 ">Thu, 10 Oct, 2024</div>
             <div class="col-md-8 ">
                 <div class="row align-items-center">
-                    <div class="col-6 position-relative">
-                        <input type="text" class="search-bar " name="searchValue" placeholder="Search city">
+                    <form method="post" action="/" class="col-6 position-relative">
+                        <input type="text" class="search-bar " name="searchLocation" placeholder="Search city">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <a href="/" class="search-btn">Search</a>
-                    </div>
+                        <button class="search-btn mx-2" type="submit">Search</button>
+                    </form>
                     <div class="col">
                         <!-- <a href="#">ENG <i class="fa-solid fa-angle-down"></a> -->
                             <select name="language" class="select-lang " id="">
