@@ -24,42 +24,57 @@ let units = "metric";
 
 app.get("/", async (req, res) => {
   try {
+    //current weather data
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=${units}`
     );
     const data = response.data;
 
+    //forecast weather data
+    const nresponse = await axios.get(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&units=${units}`
+    );
+    const ndata = nresponse.data;
+
     res.render("index.ejs", {
-      data: data,
-    });
+        data: data,
+        ndata: ndata,
+      });
   } catch (error) {
     console.error(error.message);
   }
 });
-app.post("/", async (req,res)=>{
-    try {
-        
-          const location = req.body.searchLocation;
-          console.log(location);
-          const resGeoApi = await axios.get(
-            `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${api_key}`
-          );
-          const result = resGeoApi.data;
-          lat = result[0].lat;
-          lon = result[0].lon;
-          console.log(lat + " "+lon);
-       
-        const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=${units}`
-        );
-        const data = response.data;
-    
-        res.render("index.ejs", {
+app.post("/", async (req, res) => {
+  try {
+    const location = req.body.searchLocation;
+    // console.log(location);
+    const resGeoApi = await axios.get(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${api_key}`
+    );
+    const result = resGeoApi.data;
+    lat = result[0].lat;
+    lon = result[0].lon;
+    // console.log(lat + " " + lon);
+
+    //current weather data
+    const response = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=${units}`
+    );
+    const data = response.data;
+
+    //forecast weather data
+    const nresponse = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&units=${units}`
+      );
+      const ndata = nresponse.data;
+  
+      res.render("index.ejs", {
           data: data,
+          ndata: ndata,
         });
-      } catch (error) {
-        console.error(error.message);
-      }
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 app.listen(port, () => {
   console.log(`Sever is running in port: ${port}`);

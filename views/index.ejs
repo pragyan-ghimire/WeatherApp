@@ -1,44 +1,73 @@
 <%- include('partials/header.ejs') %>
-<% if (locals.data) { %>
-    <% const d = new Date((data.dt+data.timezone) * 1000); let hour = d.getUTCHours().toString().padStart(2, '0'); let min = d.getUTCMinutes().toString().padStart(2, '0'); let sec = d.getUTCSeconds().toString().padStart(2, '0');%>
     <section class="row p-4 forecast text-center">
-        <div class="col-lg m-2 p-5 current-forecast">
-            <div class=" d-flex justify-content-between align-items-center">
-                <img class="cweather_icon" src="http://openweathermap.org/img/wn/<%= data.weather[0].icon %>@2x.png" alt="weather_condition_icon">
-                <div class="ctime_description">
-                    <h3><%= `${hour}: ${min}: ${sec} ` %></h3>
-                    <p><%= data.weather[0].main %></p>
-                </div>
-                <div class="clocation">
-                    <h3 class="caddress"><%= data.name %></h3>
-                    <p class="ccountry"><%= data.sys.country %></p>
-                </div>
-            </div>
-            <div class="cforecast-details mt-5 d-flex justify-content-between align-items-center">
-                <div>
-                    <h3 class="ctemp"><%= data.main.temp  %> &deg;</h3>
-                    <p>Temperature</p>
-                </div>
-                <div>
-                    <h3 class="chumidity"><%= data.main.humidity %>&percnt;</h3>
-                    <p>Humidity</p>
-                </div>
-                <div>
-                    <h3 class="cwind_sp"><%= data.wind.speed %> km/hr</h3>
-                    <p>Wind Speed</p>
-                </div>
-            </div>
+        <% if (locals.data) { %>
+            <% const d=new Date((data.dt+data.timezone) * 1000); let hour=d.getUTCHours().toString().padStart(2, '0' );
+                let min=d.getUTCMinutes().toString().padStart(2, '0' ); let
+                sec=d.getUTCSeconds().toString().padStart(2, '0' );%>
+                <div class="col-lg m-2 p-5 current-forecast">
+                    <div class=" d-flex justify-content-between align-items-center">
+                        <img class="cweather_icon"
+                            src="http://openweathermap.org/img/wn/<%= data.weather[0].icon %>@2x.png"
+                            alt="weather_condition_icon">
+                        <div class="ctime_description">
+                            <h3>
+                                <%= `${hour}: ${min}: ${sec} ` %>
+                            </h3>
+                            <p>
+                                <%= data.weather[0].main %>
+                            </p>
+                        </div>
+                        <div class="clocation">
+                            <h3 class="caddress">
+                                <%= data.name %>
+                            </h3>
+                            <p class="ccountry">
+                                <%= data.sys.country %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cforecast-details mt-5 d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="ctemp">
+                                <%= data.main.temp %> &deg;
+                            </h3>
+                            <p>Temperature</p>
+                        </div>
+                        <div>
+                            <h3 class="chumidity">
+                                <%= data.main.humidity %>&percnt;
+                            </h3>
+                            <p>Humidity</p>
+                        </div>
+                        <div>
+                            <h3 class="cwind_sp">
+                                <%= data.wind.speed %> km/hr
+                            </h3>
+                            <p>Wind Speed</p>
+                        </div>
+                    </div>
 
-        </div>
-        <div class="col-lg m-2 p-5 next-forecasts">
-            <div class="hourly-forecast p-3 d-flex justify-content-between align-items-center">
-                <div class="ntime">Time</div>
-                <div class="ndesp">Descp</div>
-                <div class="ntemp">Temp</div>
-            </div>
-        </div>
+                </div>
+                <% } %>
+                    <% if (locals.ndata) { %>
+                        <div class="col-lg m-2 p-5 next-forecasts">
+                            <h4 class="mb-4">Forecasts for the day</h4>
+                            <% for( let i=0; i < 5; i++ ) { %>
+                                <div class="hourly-forecast p-3 mb-2 d-flex justify-content-between align-items-center">
+                                    <div class="ntime">
+                                        <%= ndata.list[i].dt_txt %>
+                                    </div>
+                                    <div class="ndesp">
+                                        <%= ndata.list[i].weather[0].main %>
+                                    </div>
+                                    <div class="ntemp">
+                                        <%= ndata.list[i].main.temp %> &deg;
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                        <% } %>
     </section>
-<% } %>
     </main>
     <script type="module" src="script/dayTime.js"></script>
     </body>
