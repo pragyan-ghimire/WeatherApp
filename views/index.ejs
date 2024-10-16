@@ -4,7 +4,7 @@
             <% const d=new Date((data.dt+data.timezone) * 1000); let hour=d.getUTCHours().toString().padStart(2, '0' );
                 let min=d.getUTCMinutes().toString().padStart(2, '0' ); let
                 sec=d.getUTCSeconds().toString().padStart(2, '0' );%>
-                <div class="col-lg m-2 p-5 current-forecast">
+                <div class="col-lg m-2 p-5 current-forecast d-flex flex-column justify-content-center">
                     <div class=" d-flex justify-content-between align-items-center">
                         <img class="cweather_icon"
                             src="http://openweathermap.org/img/wn/<%= data.weather[0].icon %>@2x.png"
@@ -27,20 +27,20 @@
                         </div>
                     </div>
                     <div class="cforecast-details mt-5 d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3 class="ctemp">
+                        <div  class="ctemp">
+                            <h3>
                                 <%= data.main.temp %> &deg;
                             </h3>
                             <p>Temperature</p>
                         </div>
-                        <div>
-                            <h3 class="chumidity">
+                        <div class="chumidity">
+                            <h3>
                                 <%= data.main.humidity %>&percnt;
                             </h3>
                             <p>Humidity</p>
                         </div>
-                        <div>
-                            <h3 class="cwind_sp">
+                        <div class="cwind_sp">
+                            <h3>
                                 <%= data.wind.speed %> km/hr
                             </h3>
                             <p>Wind Speed</p>
@@ -51,7 +51,7 @@
                 <% } %>
                     <% if (locals.ndata) { %>
                         <div class="col-lg m-2 p-5 next-forecasts">
-                            <h4 class="mb-4">Forecasts for the day</h4>
+                            <h4 class="mb-4"><span style="color: #ccac2d;">Forecasts</span> for the day</h4>
                             <% for( let i=0; i < 5; i++ ) { %>
                                 <div class="hourly-forecast p-3 mb-2 d-flex justify-content-between align-items-center">
                                     <div class="ntime">

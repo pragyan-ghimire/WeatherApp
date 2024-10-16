@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
   --primary-bg-color: #212250;
-  --primary-btn-bg-color: #fed058;
+  --primary-btn-bg-color: #f6c345;
   --primary-txt-color: #fff;
   --secondary1-txt-color: #9392a6;
   --secondary2-txt-color: #585a74;
-  --secondary3-txt-color: #fcdb59;
+  --secondary3-txt-color: #ccac2d;
   --card-bg-color: #1b1c48;
   --primary-font-family: "Poppins", sans-serif;
 }
@@ -31,8 +31,15 @@ button{
   color: #000;
   
 }
+
+/* header */
 header{
   padding: 40px;
+}
+.date{
+  color: var(--secondary3-txt-color);
+  font-size: 18px;
+  font-weight: 500;
 }
 .fa-magnifying-glass{
   position: absolute;
@@ -76,10 +83,12 @@ header{
   border-radius: 16px;
   transition: 0.3s all ease;
 }
-.cel:hover,.fah:hover{
+/* .cel:hover,.fah:hover{
   background-color:#30316e;
+} */
+.selected{
+  background-color: var(--primary-btn-bg-color);
 }
-
 
 /* forecast */
 
@@ -94,4 +103,9 @@ header{
 .hourly-forecast{
   background-color: var(--primary-bg-color);
   border-radius: 12px;
+}
+
+/* .current-forecast */
+.ctime_description p, .clocation p, .ctemp p, .chumidity p, .cwind_sp p{
+  color: var(--secondary3-txt-color);
 }
