@@ -29,7 +29,7 @@ app.get("/", async (req, res) => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=${units}`
     );
     const data = response.data;
-
+    // console.log(response);
     //forecast weather data
     const nresponse = await axios.get(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&units=${units}`
@@ -39,6 +39,7 @@ app.get("/", async (req, res) => {
     res.render("index.ejs", {
         data: data,
         ndata: ndata,
+        unit: units,
       });
   } catch (error) {
     console.error(error.message);
@@ -71,10 +72,19 @@ app.post("/", async (req, res) => {
       res.render("index.ejs", {
           data: data,
           ndata: ndata,
+          unit: units,
         });
   } catch (error) {
     console.error(error.message);
   }
+});
+app.get("/metric",(req,res)=>{
+    units = "metric";
+    res.redirect("/");
+});
+app.get("/imperial",(req,res)=>{
+    units = "imperial";
+    res.redirect("/");
 });
 app.listen(port, () => {
   console.log(`Sever is running in port: ${port}`);

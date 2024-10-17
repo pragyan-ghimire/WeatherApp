@@ -1,9 +1,15 @@
 <%- include('partials/header.ejs') %>
     <section class="row p-4 forecast text-center">
         <% if (locals.data) { %>
-            <% const d=new Date((data.dt+data.timezone) * 1000); let hour=d.getUTCHours().toString().padStart(2, '0' );
-                let min=d.getUTCMinutes().toString().padStart(2, '0' ); let
-                sec=d.getUTCSeconds().toString().padStart(2, '0' );%>
+            <% const d=new Date((data.dt+data.timezone) * 1000);
+                let hour=d.getUTCHours().toString().padStart(2, '0' );
+                let min=d.getUTCMinutes().toString().padStart(2, '0' );
+                let sec=d.getUTCSeconds().toString().padStart(2, '0' );
+                let tMeridian = "AM";
+                if (hour > 12) {
+                    hour = (hour % 12).toString().padStart(2, '0' );
+                    tMeridian = "PM";
+                 } %>
                 <div class="col-lg m-2 p-5 current-forecast d-flex flex-column justify-content-center">
                     <div class=" d-flex justify-content-between align-items-center">
                         <img class="cweather_icon"
@@ -11,7 +17,7 @@
                             alt="weather_condition_icon">
                         <div class="ctime_description">
                             <h3>
-                                <%= `${hour}: ${min}: ${sec} ` %>
+                                <%= `${hour}: ${min} ${tMeridian} ` %>
                             </h3>
                             <p>
                                 <%= data.weather[0].main %>

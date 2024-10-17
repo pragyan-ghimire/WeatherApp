@@ -9,3 +9,13 @@ let date = d.getDate();
 let day = days[d.getDay()];
 $(".date").text(day+", "+date+" "+month+", "+year);
 // console.log("changed");
+
+// $(".cel").click(function (e) { 
+//     $(".fah").removeClass("selected");
+//     $(".cel").addClass("selected");
+//     e.preventDefault();  
+// });
+// $(".fah").click(function (e) { 
+//     $(".fah").addClass("selected");
+//     $(".cel").removeClass("selected");
+// });
