@@ -91,7 +91,7 @@ Once the server is running, you can use the WeatherApp webpage as follows:
 
 ### 3. Search location you want
 
-- Just got to search bar and type the location you want to search for.
+- Just go to search bar and type the location you want to search for. Example Delhi of India.
 ![3](https://github.com/user-attachments/assets/3e67f3a2-888f-4318-8ebf-6b2970ea2557)
 
 
