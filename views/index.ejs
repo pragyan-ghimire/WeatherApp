@@ -1,6 +1,6 @@
 <%- include('partials/header.ejs') %>
     <section class="row p-4 forecast text-center">
-        <% if (locals.data) { %>
+        <% if (locals.data && locals.unit) { %>
             <% const d=new Date((data.dt+data.timezone) * 1000);
                 let hour=d.getUTCHours().toString().padStart(2, '0' );
                 let min=d.getUTCMinutes().toString().padStart(2, '0' );
@@ -47,7 +47,12 @@
                         </div>
                         <div class="cwind_sp">
                             <h3>
-                                <%= data.wind.speed %> km/hr
+                                <%= data.wind.speed %>
+                                <% if (locals.unit == "metric") { %>
+                                    m/s
+                                <% } if(locals.unit == "imperial") { %>
+                                    mph
+                                    <% } %>
                             </h3>
                             <p>Wind Speed</p>
                         </div>
